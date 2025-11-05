@@ -1,5 +1,6 @@
 // Senarai guru
 const GURU_LIST = [
+  "GURU BESAR", "GPK 1", "GPK HEM", "GPK KOKUM", 
   "Riduan Lahero","Sherly Lazurus","Mohamad Fikrey Abdul Gapar","Ramlah Lasupu",
   "Ahmat bin Lahawing","Nur Rafika Mohammad","Ustazah Izzati Hazirah binti Mohd",
   "Samseri Hamzah","Puan Linda Arellano","Marwi Chongo","Sanggetar Kaur A/P Jasbeer Singh",
@@ -99,3 +100,4 @@ if(savedLogo) schoolLogo.src = savedLogo;
 
 // Init
 renderDriveLinks();
+
