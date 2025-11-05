@@ -10,7 +10,7 @@ const GURU_LIST = [
 // Struktur pautan Google Drive per pencerapan & tahun
 const DRIVE_LINKS = {
   kendiri: {
-    "2023/2024": "https://drive.google.com/drive/folders/1pRTzCyu8yb1rQ6vdTB6Gptg6q9PNJdCd",
+    "2023/2024": "https://drive.google.com/drive/folders/1oK4_SODxb3RkTTefcs9sYBO6hudryC9D?usp=drive_link",
     "2024/2025": "https://drive.google.com/drive/folders/1pRTzCyu8yb1rQ6vdTB6Gptg6q9PNJdCd",
     "2025/2026": "https://drive.google.com/drive/folders/1uEzjoM3moYlaGORNeXRXvEeBHxuqt2y_?usp=drive_link",
     "2026/2027": "https://drive.google.com/drive/folders/1pRTzCyu8yb1rQ6vdTB6Gptg6q9PNJdCd",
@@ -100,5 +100,6 @@ if(savedLogo) schoolLogo.src = savedLogo;
 
 // Init
 renderDriveLinks();
+
 
 
