@@ -1,220 +1,74 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ms">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DASHBOARD PENCERAPAN STANDARD 4 — SK@S SK Luasong</title>
-
-  <link rel="stylesheet" href="styles.css" />
-  <!-- Chart.js -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sistem Muat Naik Borang Standard 4 — SK Luasong</title>
+<link rel="stylesheet" href="styles.css">
+<!-- Font Awesome untuk ikon -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body id="app">
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo-wrap">
-        <img id="school-logo" alt="Logo SK Luasong (Klik untuk muat naik)" title="Klik untuk muat naik logo" />
-        <input type="file" id="logo-input" accept="image/*" />
-      </div>
-      <div class="title">
-        <h1>DASHBOARD PENCERAPAN STANDARD 4</h1>
-        <p>STANDARD KUALITI@SEKOLAH (SK@S) — SEKOLAH KEBANGSAAN LUASONG, TAWAU</p>
-      </div>
+<body>
+
+<!-- Video Background -->
+<video autoplay muted loop id="bg-video">
+  <source src="ceria.mp4" type="video/mp4">
+  Browser anda tidak menyokong video.
+</video>
+
+<div class="topbar">
+  <div class="brand">
+    <div class="logo-wrap">
+      <img id="school-logo" src="skluasong.jpg" alt="Logo SK Luasong">
+      <input type="file" id="logo-input" accept="image/*">
     </div>
+    <div class="title">
+      <h1>SISTEM MUAT NAIK STANDARD 4: PEMBELAJARAN DAN PEMUDAHCARAAN</h1>
+      <p>SEKOLAH KEBANGSAAN LUASONG, PETI SURAT 60793 91017, TAWAU SABAH</p>
+    </div>
+  </div>
+  <div class="coordinator">
+    <img src="SAYA PUNYA.png" alt="Guru Penyelaras" class="coordinator-pic">
+    <div class="coordinator-info">
+      <strong>Mohammad Fikrey bin Abdul Gapar</strong>
+      <p>Guru Penyelaras Standard Kualiti @ SK Luasong</p>
+    </div>
+  </div>
+</div>
 
-    <nav class="nav">
-      <button class="nav-btn" data-section="utama">🏠 Utama</button>
-      <button class="nav-btn" data-section="analisis">📊 Analisis</button>
-      <button class="nav-btn" data-section="pautan">📁 Pautan Drive</button>
-      <button class="nav-btn" data-section="pengurusan">⚙️ Pengurusan Data</button>
-    </nav>
-  </header>
+<div class="container">
+  <div class="filters">
+    <label for="pencerapan-select">Pilih Pencerapan:</label>
+    <select id="pencerapan-select">
+      <option value="kendiri">Pencerapan Kendiri</option>
+      <option value="pertama">Pencerapan Pertama</option>
+      <option value="kedua">Pencerapan Kedua</option>
+    </select>
 
-  <main class="container">
+    <label for="tahun-select">Pilih Tahun:</label>
+    <select id="tahun-select">
+      <option value="2023/2024">2023/2024</option>
+      <option value="2024/2025">2024/2025</option>
+      <option value="2025/2026">2025/2026</option>
+      <option value="2026/2027">2026/2027</option>
+      <option value="2027/2028">2027/2028</option>
+      <option value="2028/2029">2028/2029</option>
+      <option value="2029/2030">2029/2030</option>
+    </select>
+  </div>
 
-    <!-- UTAMA / RINGKASAN -->
-    <section id="section-utama" class="section active">
-      <div class="hero card">
-        <h2>Ringkasan Rasmi</h2>
-        <p class="lead">Dashboard rasmi pencerapan Standard 4 — digunakan untuk rekod kualiti & laporan SK@S. Gunakan penapis untuk melihat data tertentu; klik <strong>View</strong> pada jadual untuk melihat rumusan penuh.</p>
-        <div class="admin-info">
-          <h3>Pentadbir Sekolah</h3>
-          <ul>
-            <li>Mohamad Hezrey Bin Hamid — Guru Besar</li>
-            <li>Jaafar Sahadan — Penolong Kanan Pentadbiran</li>
-            <li>Irmus Isdup — Penolong Kanan HEM</li>
-            <li>Juanis Odong — Penolong Kanan Kokurikulum</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  <div class="section active" id="section-upload">
+    <div class="card">
+      <h2>Standard 4: Pembelajaran dan Pemudahcaraan</h2>
+      <div id="drive-links" class="drive-links"></div>
+    </div>
+  </div>
+</div>
 
-    <!-- ANALISIS -->
-    <section id="section-analisis" class="section">
-      <div class="controls-bar card">
-        <div class="filter-row">
-          <label>Tahun
-            <select id="filter-tahun">
-              <option value="all">Semua (2024–2030)</option>
-              <option value="2024">2024</option>
-              <option value="2025" selected>2025</option>
-              <option value="2026">2026</option>
-              <option value="2027">2027</option>
-              <option value="2028">2028</option>
-              <option value="2029">2029</option>
-              <option value="2030">2030</option>
-            </select>
-          </label>
+<footer class="footer">
+  <small>Dibangunkan oleh Mohammad Fikrey bin Abdul Gapar</small>
+</footer>
 
-          <label>Pencerapan
-            <select id="filter-pencerapan">
-              <option value="all">Semua</option>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-            </select>
-          </label>
-
-          <label>Guru
-            <select id="filter-guru"><option value="all">Semua Guru</option></select>
-          </label>
-
-          <label>MP
-            <select id="filter-mp"><option value="all">Semua MP</option></select>
-          </label>
-
-          <label>Kelas
-            <select id="filter-kelas"><option value="all">Semua Kelas</option></select>
-          </label>
-
-          <label>Jenis
-            <select id="filter-jenis"><option value="all">Semua Jenis</option></select>
-          </label>
-        </div>
-      </div>
-
-      <div class="visuals">
-        <div class="card">
-          <h3>Purata Skor Setiap Aspek (Bar)</h3>
-          <canvas id="barChart"></canvas>
-        </div>
-
-        <div class="card">
-          <h3>Profil Skor (Radar)</h3>
-          <canvas id="radarChart"></canvas>
-          <p class="hint">Radar memaparkan rekod terpilih (View) — jika tiada, radar memaparkan purata penapis.</p>
-        </div>
-
-        <div class="card wide">
-          <h3>Jadual Pencerapan</h3>
-          <div class="table-wrap">
-            <table id="data-table">
-              <thead>
-                <tr>
-                  <th>Tahun</th><th>Guru</th><th>Pencerapan</th><th>MP</th><th>Kelas</th><th>Jenis</th><th>Tarikh</th>
-                  <th>4.1.1</th><th>4.2.1</th><th>4.2.2</th><th>4.3.1</th><th>4.4.1</th><th>4.4.2</th><th>4.5.1</th><th>4.6.1</th>
-                  <th>Purata</th><th></th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-
-          <div class="table-actions">
-            <button id="download-csv">Muat Turun CSV</button>
-            <button id="clear-data">Padam Semua Data</button>
-          </div>
-        </div>
-
-        <div class="card summary-card">
-          <h3>Rumusan</h3>
-          <div id="summary-content">Pilih rekod (View) atau gunakan penapis untuk lihat rumusan ringkasan.</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PAUTAN DRIVE -->
-    <section id="section-pautan" class="section">
-      <div class="card">
-        <h3>📁 Pautan Borang Offline (Google Drive)</h3>
-        <p>Tekan <em>Tetapkan Pautan</em> untuk simpan pautan folder/borang Google Drive untuk setiap guru. Pautan disimpan secara tempatan (lokal) pada pelayar ini.</p>
-
-        <div id="drive-links" class="drive-links"></div>
-
-        <div class="note">
-          <small>Nota: pautan disimpan pada pelayar ini sahaja. Untuk gunakan di komputer lain, eksport CSV pautan atau salin pautan manual.</small>
-        </div>
-      </div>
-    </section>
-
-    <!-- PENGURUSAN -->
-    <section id="section-pengurusan" class="section">
-      <div class="card">
-        <h3>⚙️ Pengurusan Data & Konfigurasi</h3>
-        <p class="muted">Di sini cikgu boleh tambah / kemaskini rekod pencerapan rasmi.</p>
-
-        <form id="entry-form" class="entry-form">
-          <div class="form-row">
-            <label>Tahun
-              <select id="inp-tahun">
-                <option>2024</option><option selected>2025</option><option>2026</option><option>2027</option><option>2028</option><option>2029</option><option>2030</option>
-              </select>
-            </label>
-
-            <label>Nama Guru
-              <input type="text" id="inp-guru" placeholder="Contoh: Riduan Lahero" required />
-            </label>
-
-            <label>Pencerapan
-              <select id="inp-pencerapan"><option value="1">1</option><option value="2">2</option><option value="3">3</option></select>
-            </label>
-          </div>
-
-          <div class="form-row">
-            <label>Mata Pelajaran <input id="inp-mp" placeholder="Contoh: Matematik" /></label>
-            <label>Kelas <input id="inp-kelas" placeholder="Contoh: 4 Bestari" /></label>
-            <label>Jenis Penilaian <input id="inp-jenis" placeholder="Contoh: Pemerhatian" /></label>
-          </div>
-
-          <div class="form-row">
-            <label>Tarikh Pencerapan <input type="date" id="inp-tarikh" /></label>
-          </div>
-
-          <fieldset class="aspek-grid">
-            <legend>Skor Aspek (0–100)</legend>
-            <label>4.1.1 <input type="number" id="a_4_1_1" min="0" max="100" value="0" /></label>
-            <label>4.2.1 <input type="number" id="a_4_2_1" min="0" max="100" value="0" /></label>
-            <label>4.2.2 <input type="number" id="a_4_2_2" min="0" max="100" value="0" /></label>
-            <label>4.3.1 <input type="number" id="a_4_3_1" min="0" max="100" value="0" /></label>
-            <label>4.4.1 <input type="number" id="a_4_4_1" min="0" max="100" value="0" /></label>
-            <label>4.4.2 <input type="number" id="a_4_4_2" min="0" max="100" value="0" /></label>
-            <label>4.5.1 <input type="number" id="a_4_5_1" min="0" max="100" value="0" /></label>
-            <label>4.6.1 <input type="number" id="a_4_6_1" min="0" max="100" value="0" /></label>
-          </fieldset>
-
-          <div class="form-actions">
-            <button type="submit" id="add-row">Tambah Rekod</button>
-            <button type="button" id="update-row" disabled>Kemaskini Rekod</button>
-            <button type="button" id="clear-form">Kosongkan Borang</button>
-          </div>
-        </form>
-
-        <div class="help">
-          <small>* Data disimpan secara automatik dalam pelayar (localStorage). Gunakan butang Muat Turun CSV untuk simpan salinan luar talian.</small>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div>
-        <small>© SK Luasong — Dashboard Pencerapan Standard 4 (SK@S). Dibangunkan untuk kegunaan rasmi sekolah.</small>
-      </div>
-      <div class="footer-admin">
-        <small>Pentadbir: Mohamad Hezrey Bin Hamid • Jaafar Sahadan • Irmus Isdup • Juanis Odong</small>
-      </div>
-    </footer>
-  </main>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
